@@ -5,51 +5,62 @@ import { RowContainer } from "./StyledContainers";
 import logo from "../logo.svg";
 
 const linkStyle = {
-  flex: "1",
   padding: "1rem",
-  textDecoration: "none"
+  textDecoration: "none",
+  fontSize: "12",
+  fontWeight: "bold",
+  color: "hsla(0, 0%, 28%, 1)"
 };
 
 const navLinks = [
-
   {
     title: "No Time to Host?",
-    to: '/no-time-to-host' 
+    to: "/no-time-to-host"
   },
   {
     title: "Become a Host",
-    to: '/become-host' 
+    to: "/become-host"
   },
   {
     title: "Help",
-    to: '/help' 
-  },
-  {
-    title: "Log In",
-    to: '/login' 
+    to: "/help"
   },
   {
     title: "Sign Up",
-    to: '/signup' 
+    to: "/signup"
+  },
+  {
+    title: "Log In",
+    to: "/login"
   }
 ];
 
-const NavBar = () =>
+const SearchInput = styled.input`
+  flex: 2;
+  visibility: ${props => (props.searchVisible ? "visible" : "hidden")};
+`;
+
+const NavBar = props =>
   <RowContainer>
     <img
-      style={{ flex: "1", justifyContent: "flex-start" }}
+      style={{ justifyContent: "flex-start" }}
       src={logo}
       className="App-logo"
       alt="logo"
     />
-    <input style={{ flex: "2" }} placeholder="Search Terms" />
 
-    {navLinks.map((navItem, i) => 
-      <Link style={linkStyle} to={navItem.to}>
-        {navItem.title}
-      </Link>
-    )}
+    <SearchInput
+      searchVisible={props.searchVisible}
+      placeholder="Search Terms"
+    />
 
+    <RowContainer style={{ flex: "8", justifyContent: "flex-end" }}>
+      {navLinks.map((navItem, i) =>
+        <Link style={linkStyle} to={navItem.to}>
+          {navItem.title}
+        </Link>
+      )}
+    </RowContainer>
   </RowContainer>;
 
 export default NavBar;

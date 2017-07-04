@@ -7,24 +7,20 @@ import { PageContainer } from "./components/StyledContainers";
 import NavBar from "./components/NavBar";
 import Tabs from "./components/Tabs";
 
-
-
-
 const WelcomeSplash = () =>
   <PageContainer>
-    <NavBar />
+    <NavBar searchVisible={false} />
     <h2>Welcome to React</h2>
     <p>
       To get started, edit <code>src/App.js</code> and save to reload.
     </p>
     <div>Another app</div>
-    <p></p>
   </PageContainer>;
 
-  const Tabss = () =>
-    <PageContainer>
-      <Tabs />
-    </PageContainer>;
+const Tabss = () =>
+  <PageContainer>
+    <Tabs />
+  </PageContainer>;
 
 class App extends Component {
   render() {
